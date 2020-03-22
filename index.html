@@ -9,136 +9,60 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="./css/w3.css" />
-
-	<style>
-
-		html{
-			height:100%;
-		}
-
-		body{
-			min-height: 100%;
-			position: relative;
-		}
-
-		.myFont{
-			font-family: 'Roboto', sans-serif;
-		}
-
-		.navBBlue{
-			background-color: #5B91EF;
-			color: #FFF;
-			border-bottom: 1px solid #001DBC;
-		}
-
-		.navBGrey{
-			background-color: #F5F5F5;
-			color: #000;
-			padding-left: 5px;
-			padding-right: 5px;
-			border-top: 1px solid #666;
-		}
-
-		.image{
-			width: 24px !important;
-			display: inline;
-			vertical-align: baseline;
-		}
-
-		.w3-bar .image{
-			width: 38px !important;
-		}
-
-		.w3-panel p{
-			margin-top: 0.5em;
-			margin-bottom: 0.5em;
-		}
-
-		.w3-border-blue{
-			border-color: #5B91EF !important;
-		}
-
-		.w3-leftbar{
-			border-left: 10px solid  #5B91EF !important ;
-		}
-
-		.w3-container{
-			padding-bottom: 41px;
-		}
-
-		strong{
-			vertical-align: super;
-		}
-
-		.navBGrey .w3-bar-item{
-			float: right;
-			padding-left: 8px;
-			padding-right: 8px;
-		}
-
-
-	</style>
+	<link rel="stylesheet" href="./css/mystyle.css">
 
 </head>
 <body class="myFont">
+	<div id="app">
 
-	<div id="navBar" class="w3-bar navBBlue">
-		<a :href="brand.link"  class="w3-bar-item" style="font-weight: bold; text-decoration: none;">{{brand.name}}</a>
-		<a v-for="link in itens" :key="link.id" :href="link.link" class="w3-bar-item w3-button w3-hover-blue w3-hide-small">{{link.name}}</a>
+		<navbar></navbar>
 
-		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-hover-blue" v-on:click="collapsNavBar">&#9776;</a>
+		<div class="w3-container">
 
-		<div id="demo" class="w3-bar-block navBBlue w3-hide w3-hide-large w3-hide-medium">
-			<a v-for="link in itens" :key="link.id" :href="link.link" class="w3-bar-item w3-button w3-hover-blue">{{link.name}}</a>
-			
-		</div>
-	</div>
+			<div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+				<p>
+					<img class="image" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/news-128.png" alt="News">
+					<strong>News</strong>
+				</p>
+			</div>
 
-	<div class="w3-container">
-
-		<div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+			<h1>Malditos Goblins</h1>
 			<p>
-				<img class="image" src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/news-128.png" alt="News">
-				<strong>News</strong>
+				Malditos Goblins é um livro de RPG para jogo rapido. 
+				A ideia aqui foi criar um gerador de ficha para esse sitema.
+				O sistema conta com o fator de que o personagem criado vá morrer,
+				por isso é de grande valor ter um método rapido para gerar mais
+				rapidamente as fichas. 
 			</p>
-		</div>
-
-		<h1>Malditos Goblins</h1>
-		<p>
-			Malditos Goblins é um livro de RPG para jogo rapido. 
-			A ideia aqui foi criar um gerador de ficha para esse sitema.
-			O sistema conta com o fator de que o personagem criado vá morrer,
-			por isso é de grande valor ter um método rapido para gerar mais
-			rapidamente as fichas. 
-		</p>
-		<p>
-			As fichas são geradas de maneira aleatoria com o uso de um d6 (dado de 6 lados),
-			 e cada goblin possui suas características, habilidades, equipamentos e nomes. 
-		</p>
-
-
-		<div id="news" class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
 			<p>
-				<i style="font-size:24px" class="fa">&#xf07c;</i>
-				<strong>Repositorios</strong>
+				As fichas são geradas de maneira aleatoria com o uso de um d6 (dado de 6 lados),
+				e cada goblin possui suas características, habilidades, equipamentos e nomes. 
 			</p>
+
+
+			<div id="news" class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+				<p>
+					<i style="font-size:24px" class="fa">&#xf07c;</i>
+					<strong>Repositorios</strong>
+				</p>
+			</div>
+
+			<ul>
+				<li v-for="(repositorie, index) in repositories" 
+					:key="index">
+					<a :href="repositorie.link" target="_blank" rel="noopener noreferrer" >
+						{{repositorie.name}}
+					</a>
+				</li>
+			</ul>
+
 		</div>
 
-		<ul class="">
-			<li><a href="https://github.com/FelipeRhoden/Malditos-Goblins" target="_blank" rel="noopener noreferrer" >
-				Malditos Goblins
-			</a></li>
-		</ul>
-
-	</div>
-
-	<div class="w3-bar navBGrey" style="position: absolute; bottom: 0;">
-		<a href="https://liperrhoden@gmail.com" target="_blank" rel="noopener noreferrer" title="gmail"><img class="w3-bar-item image" src="https://cdn2.iconfinder.com/data/icons/social-icons-circular-color/512/gmail-128.png" alt="Gmail"></a>
-		<a href="https://github.com/felipeRhoden/" target="_blank" rel="noopener noreferrer" title="github"><i style="font-size:24px" class="w3-bar-item fa">&#xf09b;</i></a>
+		<navfooter></navfooter>
 	</div>
 
 	<!-- js vue -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="./js/main.js"></script>
 	<!-- fim js vue -->
 </body>
